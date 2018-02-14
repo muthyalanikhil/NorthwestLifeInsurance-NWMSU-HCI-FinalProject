@@ -1,0 +1,198 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Northwest Insurance</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+<body>
+    <style>
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+
+        .carousel-fade .carousel-inner .item {
+            opacity: 0;
+            transition-property: opacity;
+        }
+
+        .carousel-fade .carousel-inner .active {
+            opacity: 1;
+        }
+
+            .carousel-fade .carousel-inner .active.left,
+            .carousel-fade .carousel-inner .active.right {
+                left: 0;
+                opacity: 0;
+                z-index: 1;
+            }
+
+        .carousel-fade .carousel-inner .next.left,
+        .carousel-fade .carousel-inner .prev.right {
+            opacity: 1;
+        }
+
+        .carousel-fade .carousel-control {
+            z-index: 2;
+        }
+
+        @media all and (transform-3d), (-webkit-transform-3d) {
+            .carousel-fade .carousel-inner > .item.next,
+            .carousel-fade .carousel-inner > .item.active.right {
+                opacity: 0;
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+
+            .carousel-fade .carousel-inner > .item.prev,
+            .carousel-fade .carousel-inner > .item.active.left {
+                opacity: 0;
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+
+                .carousel-fade .carousel-inner > .item.next.left,
+                .carousel-fade .carousel-inner > .item.prev.right,
+                .carousel-fade .carousel-inner > .item.active {
+                    opacity: 1;
+                    -webkit-transform: translate3d(0, 0, 0);
+                    transform: translate3d(0, 0, 0);
+                }
+        }
+
+        .item:nth-child(1) {
+            background: url("images/background1.jpg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .item:nth-child(2) {
+            background: url("images/background2.jpg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .item:nth-child(3) {
+            background: url("images/background3.jpg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .carousel {
+            z-index: -99;
+        }
+
+            .carousel .item {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+            }
+
+        .title {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            text-shadow: 2px 2px #000;
+            color: #FFF;
+        }
+    </style>
+    <div class="carousel slide carousel-fade" data-ride="carousel">
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+            </div>
+            <div class="item">
+            </div>
+            <div class="item">
+            </div>
+        </div>
+    </div>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        <div class="navbar navbar-inverse navbar-fixed-top" style="border-bottom: solid 4px white;">
+            <div class="container" style="margin-top: 20px;">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="Default.aspx" runat="server">Northwest Insurance</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <asp:PlaceHolder ID="adminViewTabs" runat="server">
+                            <li><a runat="server" href="~/AdminView">Create Policy</a></li>
+                            <li><a runat="server" href="Requests.aspx">Requests</a></li>
+                            <li><a runat="server" href="Settings.aspx">Settings</a></li>
+                        </asp:PlaceHolder>
+                        <asp:PlaceHolder ID="userViewTabs" runat="server">
+                            <li><a runat="server" href="~/userView">Policies</a></li>
+                            <li><a runat="server" href="~/UserProfile">Profile</a></li>
+                        </asp:PlaceHolder>
+                        <li><a runat="server" href="~/Contact">Contact</a></li>
+                    </ul>
+                    <ul id="navbarUL" class="nav navbar-nav navbar-right">
+                        <asp:PlaceHolder ID="loginNavbar" runat="server">
+                            <li><a runat="server" href="~/Register">Register</a></li>
+                            <li><a runat="server" href="~/Login">Log in</a></li>
+                        </asp:PlaceHolder>
+                        <asp:PlaceHolder ID="logoutNavbar" runat="server">
+                            <li><a runat="server" id="welcomeUsername">Welcome</a></li>
+                            <li><a runat="server" href="~/Logout">Log out</a></li>
+                        </asp:PlaceHolder>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content" style="margin-top: 50px; padding: 20px; background-color: #f3f5f7eb; border: 1px solid #ccc;">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - Northwest Insurance</p>
+            </footer>
+        </div>
+    </form>
+    <script>
+        $('.carousel').carousel();
+    </script>
+</body>
+</html>
